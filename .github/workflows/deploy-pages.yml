@@ -65,12 +65,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: rm -rf node-modules && yarn install
+        run: cd nextjs-blog && rm -rf node-modules && yarn install
         # run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} build
+        run: cd nextjs-blog && ${{ steps.detect-package-manager.outputs.runner }} build
       - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} export
+        run: cd nextjs-blog && ${{ steps.detect-package-manager.outputs.runner }} export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
