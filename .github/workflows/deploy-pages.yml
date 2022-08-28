@@ -38,11 +38,6 @@ jobs:
             echo "::set-output name=command::install"
             echo "::set-output name=runner::yarn"
             exit 0
-          elif [ -f "${{ github.workspace }}/nextjs-blog/package.json" ]; then
-            echo "::set-output name=manager::npm"
-            echo "::set-output name=command::ci"
-            echo "::set-output name=runner::npx --no-install"
-            exit 0
           else
             echo "Unable to determine packager manager"
             exit 1
